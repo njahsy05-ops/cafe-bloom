@@ -35,15 +35,94 @@ if (menuButton && navigation) {
 const contactForm = document.querySelector(".contact-form");
 
 if (contactForm) {
+
   const status = contactForm.querySelector(".form-status");
 
+  const name = contactForm.querySelector("#name");
+
+  const email = contactForm.querySelector("#email");
+
+  const subject = contactForm.querySelector("#subject");
+
+  const message = contactForm.querySelector("#message");
+
+  function showError(field, text) {
+
+    let error = field.parentElement.querySelector(".field-error");
+
+    if (!error) {
+
+      error = document.createElement("p");
+
+      error.classList.add("field-error");
+
+      field.parentElement.appendChild(error);
+
+    }
+
+    error.textContent = text;
+
+    error.style.color = "#b42318";
+
+  }
+
+  function clearErrors() {
+
+    contactForm.querySelectorAll(".field-error").forEach((error) => {
+
+      error.remove();
+
+    });
+
+  }
+
   contactForm.addEventListener("submit", (event) => {
+
     event.preventDefault();
 
-    const name = contactForm.querySelector("#name");
-    const email = contactForm.querySelector("#email");
-    const subject = contactForm.querySelector("#subject");
-    const message = contactForm.querySelector("#message");
+    clearErrors();
+
+    status.textContent = "";
+
+    let hasError = false;
+
+    if (!name.value.trim()) {
+
+      showError(name, "Fyll i ditt namn.");
+
+      hasError = true;
+
+    }
+
+    if (!email.value.trim()) {
+
+      showError(email, "Fyll i din e-postadress.");
+
+      hasError = true;
+
+    } else if (!email.validity.valid) {
+
+      showError(email, "Ange en giltig e-postadress.");
+
+      hasError = true;
+
+    }
+
+    if (!subject.value.trim()) {
+
+      showError(subject, "Fyll i ett ämne.");
+
+      hasError = true;
+
+    }
+
+    if (!message.value.trim()) {
+
+      showError(message, "Skriv ett meddelande.");
+
+      hasError = true;
+
+    }
 
     if (
       !name.value.trim() ||
@@ -55,17 +134,14 @@ if (contactForm) {
       status.style.color = "#b42318";
       return;
     }
+status.textContent =
 
-    if (!email.validity.valid) {
-      status.textContent = "Ange en giltig e-postadress.";
-      status.style.color = "#b42318";
-      return;
-    }
-
-    status.textContent =
       "Tack! Detta är ett demonstrationsformulär. Inga uppgifter har skickats eller sparats.";
+
     status.style.color = "#287047";
 
     contactForm.reset();
   });
+
 }
+   
