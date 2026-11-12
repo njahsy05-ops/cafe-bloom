@@ -2,6 +2,7 @@ import { resolve } from "node:path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  base: "/cafe-bloom/",
   build: {
     rollupOptions: {
       input: {
