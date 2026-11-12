@@ -35,11 +35,37 @@ if (menuButton && navigation) {
 const contactForm = document.querySelector(".contact-form");
 
 if (contactForm) {
+  const status = contactForm.querySelector(".form-status");
+
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const status = contactForm.querySelector(".form-status");
+
+    const name = contactForm.querySelector("#name");
+    const email = contactForm.querySelector("#email");
+    const subject = contactForm.querySelector("#subject");
+    const message = contactForm.querySelector("#message");
+
+    if (
+      !name.value.trim() ||
+      !email.value.trim() ||
+      !subject.value.trim() ||
+      !message.value.trim()
+    ) {
+      status.textContent = "Vänligen fyll i alla obligatoriska fält.";
+      status.style.color = "#b42318";
+      return;
+    }
+
+    if (!email.validity.valid) {
+      status.textContent = "Ange en giltig e-postadress.";
+      status.style.color = "#b42318";
+      return;
+    }
+
     status.textContent =
-      "Tack för ditt meddelande! Detta är en demonstrationssida, så formuläret skickas inte.";
+      "Tack! Detta är ett demonstrationsformulär. Inga uppgifter har skickats eller sparats.";
+    status.style.color = "#287047";
+
     contactForm.reset();
   });
 }
