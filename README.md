@@ -17,6 +17,7 @@ Café Bloom är en responsiv webbplats för ett fiktivt kvarterscafé i Skövde.
 - `js/` – JavaScript
 - `images/` – bilder och logotyp
 - `design/` – wireframes (mobil och desktop) och mockup från Figma
+- `rapport/` – projektrapporten som PDF
 
 ## Funktioner
 
