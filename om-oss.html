@@ -1,130 +1,138 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sv">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Läs om Café Blooms passion för kaffe, bakverk och en varm cafémiljö." />
-  <title>Café Bloom | Om oss</title>
-  <link rel="stylesheet" href="/styles.css" />
-  <script type="module" src="/script.js"></script>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lär känna Café Bloom – ett kvarterscafé i Skövde där goda smaker och människor möts.">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <title>Café Bloom – Om oss</title>
 
+  <!-- Typsnitt från Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@500&amp;display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
 <body>
   <a class="skip-link" href="#main">Hoppa till innehållet</a>
+
+  <!-- ===== Header med logga och navigering ===== -->
   <header class="site-header">
-    <div class="nav-shell"><a class="brand" href="/index.html" aria-label="Café Bloom, startsida"><svg
-          class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M24 42V19m0 8C17 27 11 23 8 17c8-2 14 1 16 10Zm0-8c4-8 10-12 18-11-1 8-7 13-18 11Z" fill="none"
-            stroke="currentColor" stroke-width="2" />
-        </svg><span class="brand-name">CAFÉ BLOOM</span></a><button class="menu-toggle" type="button"
-        aria-expanded="false" aria-controls="site-navigation"
-        aria-label="Öppna meny"><span></span><span></span><span></span></button>
-      <nav class="site-nav" id="site-navigation" aria-label="Huvudmeny">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <img src="images/logo.svg" alt="" width="20" height="20">
+        CAFÉ BLOOM
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Öppna meny">
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <nav class="main-nav" id="main-nav" aria-label="Huvudmeny">
         <ul>
-          <li><a href="/index.html">Startsida</a></li>
-          <li><a href="/meny.html">Meny</a></li>
-          <li><a href="/om-oss.html" aria-current="page">Om oss</a></li>
-          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="index.html">Startsida</a></li>
+          <li><a href="meny.html">Meny</a></li>
+          <li><a href="om-oss.html" aria-current="page">Om oss</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <header class="page-hero">
-      <div class="container">
-        <p class="eyebrow">Vår berättelse</p>
-        <h1>Här får det enkla blomma.</h1>
-        <p class="lead">Café Bloom är en plats för långsamma morgnar, spontana möten och den där första, efterlängtade
-          klunken kaffe.</p>
-      </div><img class="image-banner" src="/cafe-bloom-startsida.png" alt="Café Blooms varma och ljusa cafémiljö" />
-    </header>
 
-    <section class="section" aria-labelledby="varfor-title">
-      <div class="container story-split">
-        <div class="story-image-wrap"><img src="/drycker.png" alt="Omsorgsfullt tillagade kaffedrycker" /></div>
-        <div class="story-copy">
-          <p class="eyebrow">Varför Café Bloom?</p>
-          <h2 id="varfor-title">Vi tror på vardagens små pauser.</h2>
-          <p>Idén till Café Bloom började med en enkel önskan: att skapa ett café där människor kan landa en stund. En
-            plats som känns både genomtänkt och avslappnad, där kvalitet märks utan att behöva ropas ut.</p>
-          <p>Vi hämtar inspiration från den skandinaviska fikakulturen och låter årstiderna sätta tonen. Kaffe bryggs
-            med nyfikenhet, bakverk görs med omsorg och varje gäst ska känna sig välkommen precis som den är.</p>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <p class="eyebrow">Om Café Bloom</p>
+          <h1>Mer än bara en kopp kaffe.</h1>
+          <p class="lead">Café Bloom är ett varmt kvarterscafé där goda smaker, lugna stunder och människor får mötas.</p>
+        </div>
+        <div class="hero-image">
+          <img src="images/cafe-interior.jpg" alt="Caféets ljusa lokal med böjträstolar, gröna växter och en disk med nybakat." width="1671" height="941">
         </div>
       </div>
     </section>
 
-    <section class="section section--cream" aria-labelledby="varden-title">
+    <!-- ===== Värderingar ===== -->
+    <section class="section">
       <div class="container">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Det vi som är viktigt för oss </p>
-            <h2 id="varden-title">Tre enkla saker är viktiga för oss.</h2>
-          </div>
-        </div>
-        <div class="values-grid">
-          <article class="value-card"><span class="value-number">01</span>
-            <h3>Smak med omsorg</h3>
-            <p>Vi väljer råvaror med eftertanke och låter hantverket synas i varje kopp och på varje tallrik.</p>
+        <p class="eyebrow">Det vi tror på</p>
+        <h2>Omsorg i varje detalj.</h2>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-body">
+              <h3>Smak med omsorg</h3>
+              <p>Bra råvaror, noggrannhet och kärlek i varje kopp och bakverk.</p>
+            </div>
           </article>
-          <article class="value-card"><span class="value-number">02</span>
-            <h3>Varmt värdskap</h3>
-            <p>Alla ska kunna känna sig hemma hos oss, oavsett om besöket varar i tio minuter eller en hel eftermiddag.
-            </p>
+          <article class="card">
+            <div class="card-body">
+              <h3>Varmt värdskap</h3>
+              <p>En plats där du kan landa, mötas och känna dig välkommen.</p>
+            </div>
           </article>
-          <article class="value-card"><span class="value-number">03</span>
-           <h3>Kvalitet i varje detalj</h3>
-           <p>Från kaffebönor till bakverk väljer vi råvaror med omsorg och erbjuder fokuserad meny med säsongens smaker och flera växtbaserade alternativ, så att det blir enklare att hitta en ny favorit som passar dig.</p>
+          <article class="card">
+            <div class="card-body">
+              <h3>Enklare val</h3>
+              <p>Tydliga alternativ och omtanke om både människor och miljö.</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <div class="section section--brown">
-      <div class="container quote">
-        <p>“En bra fika handlar lika mycket om känslan som om smaken.”</p>
+    <!-- ===== Citat ===== -->
+    <div class="section section-dark">
+      <div class="container">
+        <blockquote class="quote">
+          <p>”Det enkla blir något särskilt när det görs med omtanke.”</p>
+        </blockquote>
       </div>
     </div>
 
-    <section class="section" aria-labelledby="besok-title">
-      <div class="container story-split">
-        <div class="story-copy">
+    <!-- ===== Välkommen in ===== -->
+    <section class="section">
+      <div class="container split">
+        <img src="images/lunch.webp" alt="Frukost på caféet: avokadomacka, ostsmörgås och yoghurt med granola." width="1536" height="1024" loading="lazy">
+        <div>
           <p class="eyebrow">Välkommen in</p>
-          <h2 id="besok-title">Din plats, från morgon till eftermiddag.</h2>
-          <p>Ta med en bok, möt en vän eller låt kaffet bli en stund för dig själv. Här finns inga måsten – bara plats
-            för det som känns bra just idag.</p><a class="button" href="/kontakt.html">Planera ditt besök</a>
-        </div>
-        <div class="story-image-wrap"><img src="/frukost.png" alt="Frukost med avokadomacka, yoghurt och smörgås" />
+          <h2>Din plats, från morgon till eftermiddag.</h2>
+          <p>Ta med en bok, möt en vän eller ta kaffet till en stund för dig själv. Här finns inga måsten – bara plats för det som känns bra just idag.</p>
         </div>
       </div>
     </section>
+
   </main>
 
+  <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-brand">CAFÉ BLOOM</div>
+          <p class="footer-logo">CAFÉ BLOOM</p>
           <p>Ett varmt kvarterscafé för goda smaker och lugna stunder.</p>
         </div>
         <div>
-          <div class="footer-title">Besök oss</div>
-          <p>Kaplansgatan 12<br />549 34 Skövde</p>
+          <p class="footer-title">Besök oss</p>
+          <address>Kaplansgatan 12<br>541 34 Skövde</address>
         </div>
-        <div>
-          <div class="footer-title">Utforska</div>
-          <ul class="footer-links">
-            <li><a href="/index.html">Startsida</a></li>
-            <li><a href="/meny.html">Meny</a></li>
-            <li><a href="/kontakt.html">Kontakt</a></li>
+        <nav aria-label="Sidfotsmeny">
+          <p class="footer-title">Utforska</p>
+          <ul>
+            <li><a href="index.html">Startsida</a></li>
+            <li><a href="meny.html">Meny</a></li>
+            <li><a href="om-oss.html">Om oss</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
           </ul>
-        </div>
+        </nav>
       </div>
-      <div class="footer-bottom">© <span data-year></span> Café Bloom · Studentprojekt</div>
+      <p class="footer-bottom">© 2026 Café Bloom · Studentprojekt</p>
     </div>
   </footer>
-  <script>document.querySelectorAll("[data-year]").forEach((el) => el.textContent = new Date().getFullYear());</script>
 </body>
-
 </html>
