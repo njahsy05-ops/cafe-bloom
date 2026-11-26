@@ -1,133 +1,162 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sv">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Kontakta Café Bloom och se våra öppettider." />
-  <title>Café Bloom | Kontakt</title>
-  <link rel="stylesheet" href="./styles.css" />
-  <script type="module" src="./script.js"></script>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hitta till Café Bloom i Skövde. Adress, öppettider, studietider och kontaktformulär.">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <title>Café Bloom – Kontakt</title>
 
+  <!-- Typsnitt från Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@500&amp;display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
 <body>
   <a class="skip-link" href="#main">Hoppa till innehållet</a>
+
+  <!-- ===== Header med logga och navigering ===== -->
   <header class="site-header">
-    <div class="nav-shell"><a class="brand" href="./index.html" aria-label="Café Bloom, startsida"><svg
-          class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M24 42V19m0 8C17 27 11 23 8 17c8-2 14 1 16 10Zm0-8c4-8 10-12 18-11-1 8-7 13-18 11Z" fill="none"
-            stroke="currentColor" stroke-width="2" />
-        </svg><span class="brand-name">CAFÉ BLOOM</span></a><button class="menu-toggle" type="button"
-        aria-expanded="false" aria-controls="site-navigation"
-        aria-label="Öppna meny"><span></span><span></span><span></span></button>
-      <nav class="site-nav" id="site-navigation" aria-label="Huvudmeny">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <img src="images/logo.svg" alt="" width="20" height="20">
+        CAFÉ BLOOM
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Öppna meny">
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <nav class="main-nav" id="main-nav" aria-label="Huvudmeny">
         <ul>
-          <li><a href="./index.html">Startsida</a></li>
-          <li><a href="./meny.html">Meny</a></li>
-          <li><a href="./om-oss.html">Om oss</a></li>
-          <li><a href="./kontakt.html" aria-current="page">Kontakt</a></li>
+          <li><a href="index.html">Startsida</a></li>
+          <li><a href="meny.html">Meny</a></li>
+          <li><a href="om-oss.html">Om oss</a></li>
+          <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <header class="page-hero">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
       <div class="container">
         <p class="eyebrow">Vi ses över en kopp</p>
         <h1>Hitta till oss</h1>
-        <p class="lead">Har du en fråga, vill du veta mer om vårt utbud eller bara säga hej? Hör gärna av dig eller
-          titta förbi.</p>
+        <p class="lead">Har du en fråga, vill du veta mer om vårt utbud eller bara säga hej? Hör gärna av dig eller titta förbi.</p>
       </div>
-    </header>
+    </section>
 
+    <!-- ===== Kontaktuppgifter och formulär ===== -->
     <section class="section">
-      <div class="container contact-layout">
-        <div>
-          <p class="eyebrow">Kontakt & öppettider</p>
+      <div class="container contact-grid">
+
+        <div class="contact-info">
+          <p class="eyebrow">Kontakt &amp; öppettider</p>
           <h2>Välkommen in.</h2>
-          <p class="lead">Här hittar du våra kontaktuppgifter och ordinarie öppettider.</p>
-          <ul class="contact-list">
-            <li><strong>Adress</strong>Kaplansgatan 12, 549 34 Skövde</li>
-            <li><strong>Telefon</strong><a href="tel:+46792264599">079 226 45 99</a></li>
-            <li><strong>E-post</strong><a href="mailto:Cafebloom@549skövde.se">Cafebloom@549skövde.se</a></li>
-          </ul>
-          <h3>Öppettider</h3>
-          <table class="hours">
+
+          <address>
+            <p><span class="contact-label">Adress</span>Kaplansgatan 12, 541 34 Skövde</p>
+            <p><span class="contact-label">Telefon</span><a href="tel:+46500224099">0500-22 40 99</a></p>
+            <p><span class="contact-label">E-post</span><a href="mailto:hej@cafebloom.se">hej@cafebloom.se</a></p>
+          </address>
+
+          <table class="hours-table">
+            <caption>Ordinarie öppettider</caption>
             <tbody>
-              <tr>
-                <td>Måndag–fredag</td>
-                <td>07.30–18.00</td>
-              </tr>
-              <tr>
-                <td>Lördag</td>
-                <td>09.00–17.00</td>
-              </tr>
-              <tr>
-                <td>Söndag</td>
-                <td>10.00–16.00</td>
-              </tr>
+              <tr><th scope="row">Måndag–fredag</th><td>07.30–18.00</td></tr>
+              <tr><th scope="row">Lördag</th><td>09.00–17.00</td></tr>
+              <tr><th scope="row">Söndag</th><td>10.00–16.00</td></tr>
+            </tbody>
+          </table>
+
+          <table class="hours-table">
+            <caption>Studietider för studenter</caption>
+            <tbody>
+              <tr><th scope="row">Måndag–fredag</th><td>18.00–20.00</td></tr>
+              <tr><th scope="row">Lördag</th><td>17.00–18.00</td></tr>
             </tbody>
           </table>
         </div>
 
-        <div class="form-card">
+        <div class="form-box">
           <p class="eyebrow">Skicka ett meddelande</p>
           <h2>Vad kan vi hjälpa dig med?</h2>
-          <form class="contact-form" novalidate>
-            <div class="field-row">
-              <div class="field"><label for="name">Namn</label><input id="name" name="name" type="text"
-                  autocomplete="name" required /></div>
-              <div class="field"><label for="email">E-post</label><input id="email" name="email" type="email"
-                  autocomplete="email" required /></div>
+          <p class="form-info">Detta är ett demonstrationsformulär för ett studentprojekt. Inga uppgifter skickas eller sparas.</p>
+
+          <!-- novalidate: webbläsarens egna rutor stängs av, JavaScript sköter valideringen -->
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Namn</label>
+              <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error">
+              <p class="error-message" id="name-error"></p>
             </div>
-            <div class="field"><label for="subject">Ämne</label><input id="subject" name="subject" type="text"
-                required /></div>
-            <div class="field"><label for="message">Meddelande</label><textarea id="message" name="message"
-                required></textarea></div>
-            <p class="form-note">Detta är ett demonstrationsformulär för ett studentprojekt. Inga uppgifter skickas
-              eller sparas.</p>
-            <button class="button" type="submit">Skicka meddelande</button>
-            <p class="form-status" role="status" aria-live="polite"></p>
+
+            <div class="form-group">
+              <label for="email">E-post</label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error">
+              <p class="error-message" id="email-error"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Ämne</label>
+              <input type="text" id="subject" name="subject" required aria-describedby="subject-error">
+              <p class="error-message" id="subject-error"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Meddelande</label>
+              <textarea id="message" name="message" rows="6" required aria-describedby="message-error"></textarea>
+              <p class="error-message" id="message-error"></p>
+            </div>
+
+            <button class="btn" type="submit">Skicka meddelande</button>
+            <p class="form-success" id="form-success" role="status"></p>
           </form>
         </div>
+
       </div>
     </section>
 
-    <section class="section section--cream">
-      <div class="container cta-band">
-        <div>
-          <p class="eyebrow">Bra att veta</p>
-          <h2>Vi har alltid något nybakat i disken.</h2>
-        </div><a class="button" href="./meny.html">Se menyn <span aria-hidden="true">→</span></a>
+    <!-- ===== Bra att veta ===== -->
+    <section class="section section-beige">
+      <div class="container">
+        <p class="eyebrow">Bra att veta</p>
+        <h2>Vi har alltid något nybakat i disken.</h2>
       </div>
     </section>
+
   </main>
 
+  <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-brand">CAFÉ BLOOM</div>
+          <p class="footer-logo">CAFÉ BLOOM</p>
           <p>Ett varmt kvarterscafé för goda smaker och lugna stunder.</p>
         </div>
         <div>
-          <div class="footer-title">Besök oss</div>
-          <p>Kaplansgatan 12<br />549 34 Skövde</p>
+          <p class="footer-title">Besök oss</p>
+          <address>Kaplansgatan 12<br>541 34 Skövde</address>
         </div>
-        <div>
-          <div class="footer-title">Utforska</div>
-          <ul class="footer-links">
-            <li><a href="./index.html">Startsida</a></li>
-            <li><a href="./meny.html">Meny</a></li>
-            <li><a href="./om-oss.html">Om oss</a></li>
+        <nav aria-label="Sidfotsmeny">
+          <p class="footer-title">Utforska</p>
+          <ul>
+            <li><a href="index.html">Startsida</a></li>
+            <li><a href="meny.html">Meny</a></li>
+            <li><a href="om-oss.html">Om oss</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
           </ul>
-        </div>
+        </nav>
       </div>
-      <div class="footer-bottom">© <span data-year></span> Café Bloom · Studentprojekt</div>
+      <p class="footer-bottom">© 2026 Café Bloom · Studentprojekt</p>
     </div>
   </footer>
-  <script>document.querySelectorAll("[data-year]").forEach((el) => el.textContent = new Date().getFullYear());</script>
 </body>
-
 </html>
