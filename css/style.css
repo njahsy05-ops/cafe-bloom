@@ -1,0 +1,628 @@
+/* =========================================================
+   Café Bloom – stilmall
+   Mobile first: grundstilen gäller små skärmar.
+   Media queryn längst ner anpassar sidan för större skärmar.
+   ========================================================= */
+
+
+/* ---------- 1. Färger och typsnitt (variabler) ---------- */
+:root {
+  --cream: #fbf8f3;      /* sidans bakgrund */
+  --white: #fffdf9;      /* kort och header */
+  --beige: #f3eadf;      /* ljusa sektioner */
+  --brown: #3a2218;      /* mörka sektioner och footer */
+  --green: #4e5b31;      /* knappar */
+  --green-dark: #3b4524; /* knappar vid hover */
+  --text: #2e211b;       /* vanlig text */
+  --muted: #5e4e44;      /* sekundär text */
+  --line: #e6ddd1;       /* tunna linjer och ramar */
+  --error: #a12c1f;      /* felmeddelanden i formuläret */
+
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", Arial, sans-serif;
+}
+
+
+/* ---------- 2. Grundinställningar ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--cream);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 1.9rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: inherit;
+}
+
+/* Tydlig ram när man navigerar med tangentbordet */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 3px;
+}
+
+/* Centrerar innehållet och ger luft på sidorna */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Länk för tangentbordsanvändare – syns först när den får fokus */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--green);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 1rem;
+}
+
+
+/* ---------- 3. Återkommande småsaker ---------- */
+
+/* Liten text ovanför rubriker, t.ex. "KAFFE · BAKVERK · GEMENSKAP" */
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 34rem;
+}
+
+/* Grön rundad knapp */
+.btn {
+  display: inline-block;
+  background-color: var(--green);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--green-dark);
+}
+
+/* Avstånd mellan sektioner */
+.section {
+  padding: 4rem 0;
+}
+
+.section-beige {
+  background-color: var(--beige);
+}
+
+.section-dark {
+  background-color: var(--brown);
+  color: var(--beige);
+}
+
+
+/* ---------- 4. Header och navigering ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Flexbox: logga till vänster, meny till höger */
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 72px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+/* Hamburgerknappen – syns bara på små skärmar */
+.nav-toggle {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 1.4rem;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+/* På mobilen är menyn dold tills JavaScript lägger till klassen "open" */
+.main-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+
+.main-nav.open {
+  display: block;
+}
+
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 1.25rem 1rem;
+}
+
+.main-nav a {
+  display: block;
+  padding: 0.75rem 0;
+  text-decoration: none;
+}
+
+/* Markerar sidan man befinner sig på */
+.main-nav a[aria-current="page"] {
+  color: var(--green);
+  font-weight: 700;
+}
+
+
+/* ---------- 5. Hero (översta delen på varje sida) ---------- */
+.hero {
+  padding: 3rem 0;
+}
+
+.hero-inner {
+  display: grid;
+  gap: 2rem;
+}
+
+.hero-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.hero .btn {
+  margin-top: 0.5rem;
+}
+
+
+/* ---------- 6. Kort (favoriter och värderingar) ---------- */
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--white);
+  border: 1px solid var(--line);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-body p {
+  color: var(--muted);
+  margin: 0;
+}
+
+
+/* ---------- 7. Bild + text bredvid varandra ---------- */
+.split {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.split img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.hours p {
+  margin-bottom: 0.25rem;
+}
+
+.hours .note {
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+
+/* ---------- 8. Mörk uppmaning och citat ---------- */
+.cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.cta-inner h2 {
+  margin: 0;
+}
+
+.quote {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  line-height: 1.4;
+}
+
+
+/* ---------- 9. Menysidan ---------- */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+/* Den valda knappen (aria-pressed="true") blir ifylld */
+.filter-btn[aria-pressed="true"] {
+  background-color: var(--green);
+  color: #fff;
+}
+
+.menu-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.menu-card {
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  padding: 1.75rem;
+}
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Flexbox: namn till vänster, pris till höger */
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-weight: 700;
+}
+
+.menu-list p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.menu-note {
+  margin-top: 2.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+
+/* ---------- 10. Kontaktsidan ---------- */
+.contact-grid {
+  display: grid;
+  gap: 3rem;
+}
+
+.contact-info address {
+  font-style: normal;
+}
+
+.contact-label {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Tabell med öppettider */
+.hours-table {
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.hours-table caption {
+  text-align: left;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.5rem;
+}
+
+.hours-table th,
+.hours-table td {
+  text-align: left;
+  padding: 0.2rem 1.5rem 0.2rem 0;
+}
+
+.hours-table th {
+  font-weight: 500;
+}
+
+/* Formulärrutan */
+.form-box {
+  background-color: var(--beige);
+  padding: 2rem 1.5rem;
+}
+
+.form-info {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--white);
+  border: 1px solid #bfae9c;
+  border-radius: 4px;
+}
+
+/* Röd ram på fält som är fel ifyllda (klassen läggs till av JavaScript) */
+.form-group .invalid {
+  border: 2px solid var(--error);
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 0.9rem;
+  margin: 0.35rem 0 0;
+}
+
+/* Tomma felmeddelanden tar ingen plats */
+.error-message:empty {
+  display: none;
+}
+
+.form-success {
+  background-color: #e4ead6;
+  border-left: 4px solid var(--green);
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.form-success:empty {
+  display: none;
+}
+
+
+/* ---------- 11. Footer ---------- */
+.site-footer {
+  background-color: var(--brown);
+  color: var(--beige);
+  padding: 3rem 0 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.footer-title {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.site-footer address {
+  font-style: normal;
+}
+
+.site-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer a {
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(243, 234, 223, 0.25);
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   12. Media query – större skärmar (från 768 px)
+   ========================================================= */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3.2rem;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  /* Hamburgerknappen behövs inte – menyn visas alltid */
+  .nav-toggle {
+    display: none;
+  }
+
+  .main-nav {
+    display: block;
+    position: static;
+    border: none;
+    background: none;
+  }
+
+  /* Flexbox: menylänkarna på en rad */
+  .main-nav ul {
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .main-nav a {
+    padding: 0.5rem 0;
+  }
+
+  .hero {
+    padding: 4rem 0;
+  }
+
+  /* Grid: text till vänster, bild till höger */
+  .hero-inner,
+  .split,
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .contact-grid {
+    align-items: start;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cta-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .quote {
+    font-size: 2.2rem;
+  }
+
+  .form-box {
+    padding: 2.5rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+}
