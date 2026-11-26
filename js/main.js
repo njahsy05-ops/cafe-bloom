@@ -28,3 +28,33 @@ navToggle.addEventListener("click", function () {
     navToggle.setAttribute("aria-label", "Öppna meny");
   }
 });
+
+
+/* ---------- 2. Menyfilter ---------- */
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+const menuCards = document.querySelectorAll(".menu-card");
+
+// Finns inga filterknappar (andra sidor) körs loopen helt enkelt inte
+filterButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    // Vilken kategori knappen står för, t.ex. "kaffe" (från data-filter)
+    const category = button.dataset.filter;
+
+    // Markera bara den klickade knappen som vald
+    filterButtons.forEach(function (otherButton) {
+      otherButton.setAttribute("aria-pressed", "false");
+    });
+    button.setAttribute("aria-pressed", "true");
+
+    // Visa kort som matchar kategorin, dölj resten.
+    // Inget tas bort – korten göms bara med attributet hidden.
+    menuCards.forEach(function (card) {
+      if (category === "alla" || card.dataset.category === category) {
+        card.hidden = false;
+      } else {
+        card.hidden = true;
+      }
+    });
+  });
+});
