@@ -58,3 +58,82 @@ filterButtons.forEach(function (button) {
     });
   });
 });
+
+
+/* ---------- 3. Formulärvalidering ---------- */
+
+const form = document.querySelector("#contact-form");
+
+// Koden körs bara på sidan som har formuläret
+if (form) {
+  const nameField = document.querySelector("#name");
+  const emailField = document.querySelector("#email");
+  const subjectField = document.querySelector("#subject");
+  const messageField = document.querySelector("#message");
+  const successText = document.querySelector("#form-success");
+
+  form.addEventListener("submit", function (event) {
+    // Stoppa att sidan laddas om när formuläret skickas
+    event.preventDefault();
+
+    let formIsValid = true;
+
+    // Namn: minst 2 tecken
+    if (nameField.value.trim().length < 2) {
+      showError(nameField, "Skriv ditt namn (minst 2 tecken).");
+      formIsValid = false;
+    } else {
+      clearError(nameField);
+    }
+
+    // E-post: måste se ut som namn@domän.se
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailField.value.trim())) {
+      showError(emailField, "Skriv en giltig e-postadress, t.ex. namn@exempel.se.");
+      formIsValid = false;
+    } else {
+      clearError(emailField);
+    }
+
+    // Ämne: får inte vara tomt
+    if (subjectField.value.trim() === "") {
+      showError(subjectField, "Skriv vad ditt meddelande gäller.");
+      formIsValid = false;
+    } else {
+      clearError(subjectField);
+    }
+
+    // Meddelande: minst 10 tecken
+    if (messageField.value.trim().length < 10) {
+      showError(messageField, "Skriv ett meddelande på minst 10 tecken.");
+      formIsValid = false;
+    } else {
+      clearError(messageField);
+    }
+
+    if (formIsValid) {
+      successText.textContent = "Tack " + nameField.value.trim() + "! Ditt meddelande har tagits emot.";
+      form.reset();
+    } else {
+      successText.textContent = "";
+      // Flytta fokus till första felaktiga fältet
+      form.querySelector(".invalid").focus();
+    }
+  });
+}
+
+// Visar ett felmeddelande under ett fält
+function showError(field, message) {
+  const errorText = document.querySelector("#" + field.id + "-error");
+  errorText.textContent = message;
+  field.classList.add("invalid");
+  field.setAttribute("aria-invalid", "true");
+}
+
+// Tar bort felmeddelandet när fältet är rätt ifyllt
+function clearError(field) {
+  const errorText = document.querySelector("#" + field.id + "-error");
+  errorText.textContent = "";
+  field.classList.remove("invalid");
+  field.removeAttribute("aria-invalid");
+}
